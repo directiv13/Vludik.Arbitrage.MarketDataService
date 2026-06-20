@@ -1,8 +1,6 @@
 using MarketDataService.Application.DependencyInjection;
 using MarketDataService.Infrastructure.DependencyInjection;
 using MarketDataService.Worker;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Serilog;
 
 var builder = Host.CreateApplicationBuilder(args);
