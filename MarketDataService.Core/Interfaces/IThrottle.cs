@@ -1,4 +1,4 @@
-using MarketDataService.Core.Models;
+using Vludik.Arbitrage.Events.Entities;
 
 namespace MarketDataService.Core.Interfaces;
 

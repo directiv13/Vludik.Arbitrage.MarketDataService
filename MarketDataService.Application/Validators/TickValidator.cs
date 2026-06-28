@@ -18,7 +18,7 @@ public class TickValidator
     private TimeSpan StaleThreshold => TimeSpan.FromSeconds(_options.Value.StaleThresholdSeconds);
 
     /// <summary>True if the tick arrived within the configured stale threshold.</summary>
-    public bool IsFresh(PriceTick tick) => DateTime.UtcNow - tick.ReceivedAt < StaleThreshold;
+    public bool IsFresh(PriceTick tick) => DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() - tick.Timestamp < StaleThreshold.TotalMilliseconds;
 
     /// <summary>True if bid/ask are positive and the book is not crossed.</summary>
     public bool IsSane(PriceTick tick) =>

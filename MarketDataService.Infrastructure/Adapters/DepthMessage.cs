@@ -2,6 +2,7 @@ using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using MarketDataService.Core.Models;
+using Vludik.Arbitrage.Events.Entities;
 
 namespace MarketDataService.Infrastructure.Adapters;
 
@@ -25,6 +26,7 @@ internal sealed class DepthData
     [JsonPropertyName("a")] public List<List<string>>? A { get; set; }
     [JsonPropertyName("bids")] public List<List<string>>? Bids { get; set; }
     [JsonPropertyName("asks")] public List<List<string>>? Asks { get; set; }
+    [JsonPropertyName("T")] public long? Timestamp { get; set; }
 
     public List<List<string>>? BidLevels => B ?? Bids;
     public List<List<string>>? AskLevels => A ?? Asks;
@@ -68,7 +70,7 @@ internal static class DepthTickParser
             ContractType = contractType,
             BestBid = bid.Value,
             BestAsk = ask.Value,
-            ReceivedAt = DateTime.UtcNow
+            Timestamp = data.Timestamp ?? DateTimeOffset.UtcNow.ToUnixTimeMilliseconds()
         };
         return true;
     }

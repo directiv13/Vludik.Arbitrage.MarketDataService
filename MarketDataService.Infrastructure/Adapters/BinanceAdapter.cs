@@ -5,6 +5,7 @@ using MarketDataService.Infrastructure.Options;
 using MarketDataService.Infrastructure.WebSocket;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Vludik.Arbitrage.Events.Entities;
 
 namespace MarketDataService.Infrastructure.Adapters;
 

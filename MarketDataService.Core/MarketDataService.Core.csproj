@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Vludik.Arbitrage.Events" Version="1.0.2" />
+  </ItemGroup>
+
 </Project>

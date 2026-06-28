@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
 using StackExchange.Redis;
+using System.Text.Json.Serialization;
 
 namespace MarketDataService.Infrastructure.DependencyInjection;
 
@@ -87,6 +88,12 @@ public static class InfrastructureServiceExtensions
                         h.Username(configuration["RabbitMQ:Username"] ?? "guest");
                         h.Password(configuration["RabbitMQ:Password"] ?? "guest");
                     });
+
+                cfg.ConfigureJsonSerializerOptions(opts =>
+                {
+                    opts.Converters.Add(new JsonStringEnumConverter());
+                    return opts;
+                });
 
                 // One queue per event type, bound to the shared topic exchange by routing key.
                 // Faulted messages land in MassTransit's automatic "<queue>_error" dead-letter queue

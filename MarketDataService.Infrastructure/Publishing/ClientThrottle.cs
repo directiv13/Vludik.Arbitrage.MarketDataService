@@ -1,8 +1,8 @@
 using System.Collections.Concurrent;
 using MarketDataService.Core.Interfaces;
-using MarketDataService.Core.Models;
 using MarketDataService.Infrastructure.Options;
 using Microsoft.Extensions.Options;
+using Vludik.Arbitrage.Events.Entities;
 
 namespace MarketDataService.Infrastructure.Publishing;
 

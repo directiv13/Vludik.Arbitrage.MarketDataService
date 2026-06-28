@@ -1,3 +1,5 @@
+using Vludik.Arbitrage.Events.Entities;
+
 namespace MarketDataService.Core.Models;
 
 /// <summary>

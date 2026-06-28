@@ -1,6 +1,9 @@
 services:
   market-data:
-    build: .
+    build:
+      context: .
+      args:
+        GITHUB_TOKEN: ${GITHUB_TOKEN}
     environment:
       - Redis__ConnectionString=redis:6379
       - RabbitMQ__Host=rabbitmq

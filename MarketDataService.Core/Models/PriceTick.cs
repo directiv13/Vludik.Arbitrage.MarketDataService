@@ -1,3 +1,5 @@
+using Vludik.Arbitrage.Events.Entities;
+
 namespace MarketDataService.Core.Models;
 
 /// <summary>
@@ -20,8 +22,8 @@ public record PriceTick
     /// <summary>Best ask price.</summary>
     public decimal BestAsk { get; init; }
 
-    /// <summary>UTC timestamp set when the tick arrived at this service.</summary>
-    public DateTime ReceivedAt { get; init; }
+    /// <summary>Unix timestamp set when the tick arrived at this service.</summary>
+    public long Timestamp { get; init; }
 
     /// <summary>Builds the <see cref="SubscriptionKey"/> this tick belongs to.</summary>
     public SubscriptionKey ToSubscriptionKey() => new(Exchange, Symbol, ContractType);

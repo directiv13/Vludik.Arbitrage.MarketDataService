@@ -1,8 +1,8 @@
-using MarketDataService.Core.Events;
 using MarketDataService.Core.Exceptions;
 using MarketDataService.Core.Interfaces;
 using MarketDataService.Core.Models;
 using Microsoft.Extensions.Logging;
+using Vludik.Arbitrage.Events.Entities;
 
 namespace MarketDataService.Application.Services;
 
@@ -27,8 +27,8 @@ public class MarketDataOrchestrator
     /// <summary>Adds a consumer for both legs of an event. Called by Job/Subscription created consumers.</summary>
     public Task AddConsumersAsync(
         string symbol,
-        ExchangeInfo buyExchange,
-        ExchangeInfo sellExchange,
+        ExchangeRef buyExchange,
+        ExchangeRef sellExchange,
         CancellationToken ct)
         => Task.WhenAll(
             AddLegAsync(symbol, buyExchange, ct),
@@ -37,8 +37,8 @@ public class MarketDataOrchestrator
     /// <summary>Removes a consumer for both legs of an event. Called by Job/Subscription finished/deleted consumers.</summary>
     public Task RemoveConsumersAsync(
         string symbol,
-        ExchangeInfo buyExchange,
-        ExchangeInfo sellExchange,
+        ExchangeRef buyExchange,
+        ExchangeRef sellExchange,
         CancellationToken ct)
         => Task.WhenAll(
             RemoveLegAsync(symbol, buyExchange, ct),
@@ -64,7 +64,7 @@ public class MarketDataOrchestrator
         }
     }
 
-    private async Task AddLegAsync(string symbol, ExchangeInfo exchange, CancellationToken ct)
+    private async Task AddLegAsync(string symbol, ExchangeRef exchange, CancellationToken ct)
     {
         if (!TryBuildKey(symbol, exchange, out var key))
             return;
@@ -72,7 +72,7 @@ public class MarketDataOrchestrator
         await _registry.AddConsumerAsync(key, ct);
     }
 
-    private async Task RemoveLegAsync(string symbol, ExchangeInfo exchange, CancellationToken ct)
+    private async Task RemoveLegAsync(string symbol, ExchangeRef exchange, CancellationToken ct)
     {
         if (!TryBuildKey(symbol, exchange, out var key))
             return;
@@ -80,11 +80,11 @@ public class MarketDataOrchestrator
         await _registry.RemoveConsumerAsync(key, ct);
     }
 
-    private bool TryBuildKey(string symbol, ExchangeInfo exchange, out SubscriptionKey key)
+    private bool TryBuildKey(string symbol, ExchangeRef exchange, out SubscriptionKey key)
     {
         try
         {
-            key = new SubscriptionKey(exchange.Name, symbol, exchange.ToContractType());
+            key = new SubscriptionKey(exchange.Name, symbol, exchange.Type);
             return true;
         }
         catch (UnsupportedContractException ex)

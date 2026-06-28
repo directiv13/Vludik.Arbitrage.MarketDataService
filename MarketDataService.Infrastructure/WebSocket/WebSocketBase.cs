@@ -4,6 +4,7 @@ using MarketDataService.Core.Exceptions;
 using MarketDataService.Core.Models;
 using MarketDataService.Infrastructure.Options;
 using Microsoft.Extensions.Logging;
+using Vludik.Arbitrage.Events.Entities;
 
 namespace MarketDataService.Infrastructure.WebSocket;
 

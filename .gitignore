@@ -137,3 +137,8 @@ $RECYCLE.BIN/
 _NCrunch*
 @FlameWert
 FlameWert commen
+
+# Environment variables (contains secrets, e.g. GITHUB_TOKEN)
+.env
+.env.*
+!.env.example
