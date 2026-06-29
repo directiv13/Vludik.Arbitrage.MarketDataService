@@ -1,5 +1,5 @@
 using MarketDataService.Core.Models;
-using Vludik.Arbitrage.Events.Entities;
+using Vludik.Arbitrage.Shared.Enums;
 
 namespace MarketDataService.Core.Interfaces;
 

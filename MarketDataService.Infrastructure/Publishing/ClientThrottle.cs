@@ -2,7 +2,7 @@ using System.Collections.Concurrent;
 using MarketDataService.Core.Interfaces;
 using MarketDataService.Infrastructure.Options;
 using Microsoft.Extensions.Options;
-using Vludik.Arbitrage.Events.Entities;
+using Vludik.Arbitrage.Shared.Enums;
 
 namespace MarketDataService.Infrastructure.Publishing;
 

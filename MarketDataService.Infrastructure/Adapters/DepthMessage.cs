@@ -2,7 +2,7 @@ using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using MarketDataService.Core.Models;
-using Vludik.Arbitrage.Events.Entities;
+using Vludik.Arbitrage.Shared.Enums;
 
 namespace MarketDataService.Infrastructure.Adapters;
 

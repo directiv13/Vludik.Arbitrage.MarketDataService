@@ -1,7 +1,7 @@
 using MarketDataService.Application.Services;
 using MassTransit;
 using Microsoft.Extensions.Logging;
-using Vludik.Arbitrage.Events;
+using Vludik.Arbitrage.JobsService.Shared.Events;
 
 namespace MarketDataService.Infrastructure.Consumers;
 

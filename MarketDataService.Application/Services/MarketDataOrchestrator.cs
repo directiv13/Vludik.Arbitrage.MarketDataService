@@ -2,7 +2,7 @@ using MarketDataService.Core.Exceptions;
 using MarketDataService.Core.Interfaces;
 using MarketDataService.Core.Models;
 using Microsoft.Extensions.Logging;
-using Vludik.Arbitrage.Events.Entities;
+using Vludik.Arbitrage.Shared.Models;
 
 namespace MarketDataService.Application.Services;
 

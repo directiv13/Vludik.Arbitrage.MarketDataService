@@ -6,7 +6,7 @@ using MarketDataService.Infrastructure.WebSocket;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using StackExchange.Redis;
-using Vludik.Arbitrage.Events.Entities;
+using Vludik.Arbitrage.Shared.Enums;
 
 namespace MarketDataService.Infrastructure.Registry;
 
